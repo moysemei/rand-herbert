@@ -1,0 +1,5 @@
+# binários gerados pelo go build/test
+*.exe
+*.test
+*.out
+/bin/
