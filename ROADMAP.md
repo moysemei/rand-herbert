@@ -1,6 +1,6 @@
 # Roadmap
 
-A ordem das fases é fixa. A velocidade depende da dose (hoje: 20 min/dia, fase de hábito).
+A ordem das fases é fixa. A velocidade depende da dose (escada: 20 min → 45 min a partir de 2026-10-26 → 1h30; detalhes no `CLAUDE.md`). Na dose de 1h30, problemas de entrevista (prévia da fase 3) e as aulas do Hussein (teoria da fase 4) andam em paralelo com a trilha principal.
 Os drills são numerados na ordem em que são criados, contando revisões de sexta e drills de reforço.
 Cada tópico pode virar um ou mais drills, conforme o desempenho.
 
@@ -90,7 +90,7 @@ Cada tópico pode virar um ou mais drills, conforme o desempenho.
 
 ## Curso complementar: Fundamentals of Backend Engineering (Hussein Nasser)
 
-Começa quando a dose subir. Recomeçar do início da seção 2 (a aula 6 já foi vista).
+Começa na dose de 1h30, às terças e quintas, com resumo de 3 linhas em inglês em `notes/hussein/`. Recomeçar do início da seção 2 (a aula 6 já foi vista). A tabela abaixo diz onde cada aula vira prática.
 
 | Seção do curso | Aulas | Quando entra |
 |---|---|---|

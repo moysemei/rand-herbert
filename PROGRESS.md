@@ -4,11 +4,15 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 
 ```
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
-dose: 20min               # fase de hábito; subir quando eu pedir
+dose: 20min               # 45min a partir de 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
 current_drill: 011-for-while
 status: pending           # pending | done
 ```
+
+## Agenda
+
+- **Prova:** 2026-12-05 (a confirmar). Semana de `maintenance`: 2026-11-30 a 2026-12-04. Volta ao normal em 2026-12-07.
 
 ## Histórico
 
