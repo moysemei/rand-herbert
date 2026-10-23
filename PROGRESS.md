@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 20min               # 45min a partir de 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 012-combined-conditions
+current_drill: 013-review-week-3
 status: pending           # pending | done
 ```
 
@@ -29,7 +29,8 @@ status: pending           # pending | done
 | 009-for | `for` clássico, acumulador, valor inicial, limites | 2026-10-19 | 2026-10-19 | Travou: dica 1 no `SumTo`, dica 3 no `Factorial`; `SumOfMultiples` resolvido com ajuda de IA (anotado por ele). Raiz: usava o `n` dentro da conta (`total += i + n`, `n * (n-1)`), sem ver o `i` como "o número da vez". Ele mesmo nomeou a confusão. Plano incompleto, sem comentários. |
 | 010-for-practice | Reforço de `for`: papel de cada variável, contar vs somar, tabela de rastreio | 2026-10-20 | 2026-10-20 | Grande melhora: `SumEven` sem dica, `CountMultiples` de primeira (contou, não somou), `Power` com dica 2 (tentava escrever a conta inteira numa linha). Pulou as tabelas ("vou tendo ideia e passo pra prática"): plano passa a ser 1 linha por função, tabela quando travar. Sem espaço depois do `//`. |
 | 011-for-while | `for` como while, percorrer dígitos, caso do zero, `break` (intro) | 2026-10-21 | 2026-10-21 | Entregue antes das 15h, com `go fmt`. Caiu no loop infinito e saiu sozinho. `ReverseNumber` com `digit :=` bem nomeado, mas remontar o número foi difícil (sem tabela no plano). `CountDigits(0)` resolvido com `count++` antes do loop (certo, mas "ajambrado" nas palavras dele). Acumulador chamado `f`. |
-| 012-combined-conditions | Condições combinadas, padrão busca, `break`/`continue`/`return` no loop | 2026-10-22 | — | — |
+| 012-combined-conditions | Condições combinadas, padrão busca, `break`/`continue`/`return` no loop | 2026-10-22 | 2026-10-22 | Código limpo: ordem certa no `FizzBuzz`, "não achei" depois do loop, `candidate := n + 1`. Usou `d <= n/d` (não estava no material, sem explicação no plano). Sem comentários, sem contas à mão e sem "Dificuldades": pedir a explicação e o registro. |
+| 013-review-week-3 | Revisão de sexta: loops, contar vs somar, padrão busca, cópia do original, ajudantes de memória | 2026-10-23 | — | — |
 
 ## Pontos de atenção
 
@@ -41,7 +42,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Nome de variável:** `f`, `result` para contagem. Nome diz o que guarda. (drills 010 e 011)
 - **Plano:** ele pula tabelas longas. Formato combinado a partir do 011: uma linha por função (muda / fixo / inicial / quando para) e tabela só quando travar, antes da dica. (drill 010)
 - **Pedir ajuda na ordem certa:** dicas → chat com o tutor → IA só para dica, sem código. No 009 a parte 3 veio pronta. (drill 009)
-- **Só usar o que consegue explicar:** no 008 usou `(m + 59) / 60` sem explicar no plano. Pedir a explicação no plano quando aparecer truque. (drill 008)
+- **Só usar o que consegue explicar:** no 008 usou `(m + 59) / 60`, no 012 `d <= n/d`, os dois sem explicação no plano. Pedir a explicação e o registro nas "Dificuldades" quando aparecer truque. (drills 008 e 012)
 - **Decompor com `/` e `%`.** Cada valor da saída responde uma pergunta ("quantos inteiros cabem?" → `/`, "o que sobra?" → `%`). Pediu dica 2–3 nos drills 004–006; no 008 (revisão) saiu sem dica. Manter no radar. (drills 004 a 008)
 - **Escolher entre candidatos:** listar as respostas possíveis, achar a conta de cada uma, e só então o `if`. (drill 006, revisão no 008)
 - **Hábitos do Python:** comparação encadeada (`90 <= x <= 100`) não existe em Go; cada comparação é separada e ligada com `&&`. (drill 007)
@@ -49,7 +50,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Calcular primeiro, formatar depois:** o `Sprintf` não calcula, só coloca valores prontos nos slots, na ordem. (drill 004)
 - **Cálculo à mão no plano:** fazer o exemplo do README no papel antes de codar, a desmontagem também, não só a remontagem. No 004 teria pegado o `&&` errado do bissexto; no 007, o 101 do `Grade`. (drills 004, 005 e 007)
 - **Vocabulário: variável vs constante.** Chamou `tens := ...` de "constante". Constante = valor conhecido antes de rodar. (drill 005)
-- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"). *based on*, não *based in* (2x). (drills 003 a 011)
+- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"); no 012, nenhum de novo. *based on*, não *based in* (2x). (drills 003 a 012)
 - **Inglês nos comentários e nomes:** ortografia, falsos cognatos (*resume* ≠ resumir → *summarize*), *person* vs *people*, *a*/*an*, *into*, *based on*. ~~Constante com unidade no nome~~ (feito no 008). (drills 002 a 008)
 - **Maiúscula = exportado** vale para constantes também: no 008 uma constante interna ficou exportada. (drill 008)
 - **Variável só para devolver** (`x := ...; return x`) quando o nome não acrescenta nada. (drills 003 e 008)
