@@ -6,13 +6,19 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 014-multiple-returns
+current_drill: 015-strings-runes
 status: pending           # pending | done
 ```
 
 ## Agenda
 
 - **Prova:** 2026-12-05 (a confirmar). Semana de `maintenance`: 2026-11-30 a 2026-12-04. Volta ao normal em 2026-12-07.
+
+## Dose 45 min: acompanhamento
+
+Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo menos 4 dos 5 dias úteis.
+
+- Semana 1 (26/10–30/10): seg ✓ (014)
 
 ## Histórico
 
@@ -31,7 +37,8 @@ status: pending           # pending | done
 | 011-for-while | `for` como while, percorrer dígitos, caso do zero, `break` (intro) | 2026-10-21 | 2026-10-21 | Entregue antes das 15h, com `go fmt`. Caiu no loop infinito e saiu sozinho. `ReverseNumber` com `digit :=` bem nomeado, mas remontar o número foi difícil (sem tabela no plano). `CountDigits(0)` resolvido com `count++` antes do loop (certo, mas "ajambrado" nas palavras dele). Acumulador chamado `f`. |
 | 012-combined-conditions | Condições combinadas, padrão busca, `break`/`continue`/`return` no loop | 2026-10-22 | 2026-10-22 | Código limpo: ordem certa no `FizzBuzz`, "não achei" depois do loop, `candidate := n + 1`. Usou `d <= n/d` (não estava no material, sem explicação no plano). Sem comentários, sem contas à mão e sem "Dificuldades": pedir a explicação e o registro. |
 | 013-review-week-3 | Revisão de sexta: loops, contar vs somar, padrão busca, cópia do original, ajudantes de memória | 2026-10-23 | 2026-10-25 | Sem erros. Resolveu de uma vez vários pontos de atenção: comentários com verbo certo em tudo, nomes claros (`original`, `reversed`), cópia antes do loop, contas à mão no plano. `d <= n/d` de novo sem explicação; sem "Dificuldades" pelo 2º drill seguido. |
-| 014-multiple-returns | Múltiplos retornos, retornos nomeados, vírgula ok (+ refazer: `Power`) | 2026-10-26 | — | — |
+| 014-multiple-returns | Múltiplos retornos, retornos nomeados, vírgula ok (+ refazer: `Power`) | 2026-10-26 | 2026-10-26 | Entrega mais completa até aqui: refazer certo, tabela do `MinMaxDigit` certa, explicação do `d <= n/d`, "Dificuldades" detalhadas (queria guardar todos os dígitos; entendeu os dois acumuladores). Usou `(n/10)%10` do review 005. `=` vs `==` de novo (corrigiu sozinho). Variáveis `min`/`max` escondem as funções embutidas. |
+| 015-strings-runes | Strings: bytes vs runes, `len`, indexação, `for range` (+ refazer: `ReverseNumber`) | 2026-10-27 | — | — |
 
 ## Pontos de atenção
 
@@ -43,7 +50,9 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - ~~**Nome de variável:** `f`, `result` para contagem.~~ Resolvido no 013. (drills 010 e 011)
 - **Plano:** ele pula tabelas longas. Formato combinado a partir do 011: uma linha por função (muda / fixo / inicial / quando para) e tabela só quando travar, antes da dica. (drill 010)
 - **Pedir ajuda na ordem certa:** dicas → chat com o tutor → IA só para dica, sem código. No 009 a parte 3 veio pronta. (drill 009)
-- **Só usar o que consegue explicar / registrar as "Dificuldades":** no 008 `(m + 59) / 60`, no 012 e no 013 `d <= n/d`, sem explicação. "Dificuldades" ausentes no 012 e no 013 (pedido: escrever "nenhuma" se não houver). (drills 008, 012 e 013)
+- ~~**Só usar o que consegue explicar / registrar as "Dificuldades":**~~ Explicou o `d <= n/d` e voltou a escrever as "Dificuldades" no 014. Manter no radar. (drills 008, 012, 013 e 014)
+- **Pensar em "guardar tudo" (reflexo do Python):** no 014 quis guardar todos os dígitos para achar min/max. Treinar *single pass* com acumuladores. (drill 014)
+- **Nomes que escondem funções embutidas:** `min`, `max` (Go 1.21+), `len`. (drill 014)
 - **Decompor com `/` e `%`.** Cada valor da saída responde uma pergunta ("quantos inteiros cabem?" → `/`, "o que sobra?" → `%`). Pediu dica 2–3 nos drills 004–006; no 008 (revisão) saiu sem dica. Manter no radar. (drills 004 a 008)
 - **Escolher entre candidatos:** listar as respostas possíveis, achar a conta de cada uma, e só então o `if`. (drill 006, revisão no 008)
 - **Hábitos do Python:** comparação encadeada (`90 <= x <= 100`) não existe em Go; cada comparação é separada e ligada com `&&`. (drill 007)
@@ -57,7 +66,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Variável só para devolver** (`x := ...; return x`) quando o nome não acrescenta nada. (drills 003 e 008)
 - **Converter onde os tipos se encontram,** não "na saída". (drill 003)
 - **Usar o parâmetro:** testar a função na cabeça com duas entradas diferentes antes de rodar. (drill 001)
-- **`=` vs `==` em condição:** achou sozinho no 006 (a mensagem fala em *assignment*). (drill 006)
+- **`=` vs `==` em condição:** achou sozinho no 006 e no 014 (a mensagem fala em *assignment*). (drills 006 e 014)
 - ~~**Constante:** `const x = valor`, nunca `:=`.~~ Corrigido no 003.
 - ~~**Montar texto:** um caminho só.~~ Corrigido no 003.
 - ~~**Imprimir vs devolver.**~~ Não se repetiu desde o 001.
