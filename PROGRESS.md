@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 015-strings-runes
+current_drill: 016-strings-strconv
 status: pending           # pending | done
 ```
 
@@ -18,7 +18,7 @@ status: pending           # pending | done
 
 Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo menos 4 dos 5 dias úteis.
 
-- Semana 1 (26/10–30/10): seg ✓ (014)
+- Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015)
 
 ## Histórico
 
@@ -38,7 +38,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 012-combined-conditions | Condições combinadas, padrão busca, `break`/`continue`/`return` no loop | 2026-10-22 | 2026-10-22 | Código limpo: ordem certa no `FizzBuzz`, "não achei" depois do loop, `candidate := n + 1`. Usou `d <= n/d` (não estava no material, sem explicação no plano). Sem comentários, sem contas à mão e sem "Dificuldades": pedir a explicação e o registro. |
 | 013-review-week-3 | Revisão de sexta: loops, contar vs somar, padrão busca, cópia do original, ajudantes de memória | 2026-10-23 | 2026-10-25 | Sem erros. Resolveu de uma vez vários pontos de atenção: comentários com verbo certo em tudo, nomes claros (`original`, `reversed`), cópia antes do loop, contas à mão no plano. `d <= n/d` de novo sem explicação; sem "Dificuldades" pelo 2º drill seguido. |
 | 014-multiple-returns | Múltiplos retornos, retornos nomeados, vírgula ok (+ refazer: `Power`) | 2026-10-26 | 2026-10-26 | Entrega mais completa até aqui: refazer certo, tabela do `MinMaxDigit` certa, explicação do `d <= n/d`, "Dificuldades" detalhadas (queria guardar todos os dígitos; entendeu os dois acumuladores). Usou `(n/10)%10` do review 005. `=` vs `==` de novo (corrigiu sozinho). Variáveis `min`/`max` escondem as funções embutidas. |
-| 015-strings-runes | Strings: bytes vs runes, `len`, indexação, `for range` (+ refazer: `ReverseNumber`) | 2026-10-27 | — | — |
+| 015-strings-runes | Strings: bytes vs runes, `len`, indexação, `for range` (+ refazer: `ReverseNumber`) | 2026-10-27 | 2026-10-27 | Entregue às 12h, com refazer certo. `Sizes` certo após ler o erro ("r declarado e não usado" → `for range s`). Tentou `r == 'a' \|\| 'e'` ("ou" falado). `Reverse` pediu ajuda: não via por que colocar na frente inverte; a 1ª ideia (por índice) é a de slice. Não acha o `\|` no teclado (ABNT2: Shift + `\`). |
+| 016-strings-strconv | Pacotes `strings` e `strconv`, `Atoi` com `err` (+ refazer: `FizzBuzz`) | 2026-10-28 | — | — |
 
 ## Pontos de atenção
 
@@ -53,6 +54,8 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - ~~**Só usar o que consegue explicar / registrar as "Dificuldades":**~~ Explicou o `d <= n/d` e voltou a escrever as "Dificuldades" no 014. Manter no radar. (drills 008, 012, 013 e 014)
 - **Pensar em "guardar tudo" (reflexo do Python):** no 014 quis guardar todos os dígitos para achar min/max. Treinar *single pass* com acumuladores. (drill 014)
 - **Nomes que escondem funções embutidas:** `min`, `max` (Go 1.21+), `len`. (drill 014)
+- **`||` liga condições completas:** `r == 'a' || r == 'e'`, nunca `r == 'a' || 'e'`. Para um valor contra várias opções, `switch`. (drill 015)
+- **Montar string/número ao contrário:** "ler do fim e pôr atrás" ou "ler do começo e pôr na frente". (drills 011 e 015)
 - **Decompor com `/` e `%`.** Cada valor da saída responde uma pergunta ("quantos inteiros cabem?" → `/`, "o que sobra?" → `%`). Pediu dica 2–3 nos drills 004–006; no 008 (revisão) saiu sem dica. Manter no radar. (drills 004 a 008)
 - **Escolher entre candidatos:** listar as respostas possíveis, achar a conta de cada uma, e só então o `if`. (drill 006, revisão no 008)
 - **Hábitos do Python:** comparação encadeada (`90 <= x <= 100`) não existe em Go; cada comparação é separada e ligada com `&&`. (drill 007)
