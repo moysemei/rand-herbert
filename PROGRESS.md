@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 018-review-week-4
+current_drill: 019-slices-2
 status: pending           # pending | done
 ```
 
@@ -18,7 +18,8 @@ status: pending           # pending | done
 
 Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo menos 4 dos 5 dias úteis.
 
-- Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017)
+- Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
+- Semana 2 (02/11–06/11):
 
 ## Histórico
 
@@ -41,13 +42,17 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 015-strings-runes | Strings: bytes vs runes, `len`, indexação, `for range` (+ refazer: `ReverseNumber`) | 2026-10-27 | 2026-10-27 | Entregue às 12h, com refazer certo. `Sizes` certo após ler o erro ("r declarado e não usado" → `for range s`). Tentou `r == 'a' \|\| 'e'` ("ou" falado). `Reverse` pediu ajuda: não via por que colocar na frente inverte; a 1ª ideia (por índice) é a de slice. Não acha o `\|` no teclado (ABNT2: Shift + `\`). |
 | 016-strings-strconv | Pacotes `strings` e `strconv`, `Atoi` com `err` (+ refazer: `FizzBuzz`) | 2026-10-28 | 2026-10-28 | Entregue às 13h, com refazer certo. "Dificuldades" exemplares (copiou a tentativa errada). Travou no `SumNumbers`: tirou o `word` do `for range` e passou o `s` inteiro ao `Atoi` (mesma confusão do 009: a variável do loop é o item da vez). `IsPalindrome`: entendeu sozinho que precisava normalizar antes. Comentários com verbos errados. |
 | 017-slices | Slices: literal, índice, `len`, `append`, `for range`, troca (+ refazer: `DigitalRoot`) | 2026-10-29 | 2026-10-29 | Entregue com refazer certo. `MaxOf` com ajuste próprio (`return` dentro do `if`). `Countdown` e `ReverseInPlace` com bastante ajuda (inclusive do ChatGPT, para a estrutura). Autodiagnóstico preciso: entende as partes, trava ao juntar; escreve código antes de saber o que fazer. Review introduziu o método de 4 passos e o cardápio de padrões. `max` como variável de novo. |
-| 018-review-week-4 | Revisão de sexta: método de 4 passos + cardápio de padrões (+ refazer: `Reverse`) | 2026-10-30 | — | — |
+| 018-review-week-4 | Revisão de sexta: método de 4 passos + cardápio de padrões (+ refazer: `Reverse`) | 2026-10-30 | 2026-11-01 | Método aplicado nas 4 funções (exemplo, padrão, passos). `CountChar` e `Contains` sozinho, sem estrutura pronta. `LongestWord`: confundiu buscar com melhor até agora, esqueceu `strings.Fields`, comparou strings em vez de `len` (corrigiu). `ParseAll`: identificou os 2 padrões, esqueceu `Atoi`+`err`. Nomes longos demais. |
+| 019-slices-2 | Fatiar, janela vs cópia (`slices.Clone`), filtrar, `append(a, b...)` (+ refazer: `SumNumbers`) | 2026-11-02 | — | — |
 
 ## Pontos de atenção
 
 Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 
-- **O ponto central (diagnosticado por ele no 017): juntar as partes num algoritmo.** Entende cada operação, mas trava ao montar a função e às vezes escreve código antes de saber o que fazer. Ferramenta: método de 4 passos (exemplo à mão → padrão do cardápio → passos em português → Go) e o cardápio (acumular, contar, melhor até agora, buscar, montar, percorrer dígitos, trocar pontas). Cobrar o passo 2 (nome do padrão) nos planos. (drills 004 a 017; método desde o 018)
+- **O ponto central (diagnosticado por ele no 017): juntar as partes num algoritmo.** Entende cada operação, mas trava ao montar a função e às vezes escreve código antes de saber o que fazer. Ferramenta: método de 4 passos (exemplo à mão → padrão do cardápio → passos em português → Go) e o cardápio (acumular, contar, melhor até agora, buscar, montar, percorrer dígitos, trocar pontas). Cobrar o passo 2 (nome do padrão) nos planos. No 018: aplicou o método nas 4 funções; resolveu sozinho as de padrão único. (drills 004 a 018; método desde o 018)
+- **Buscar vs melhor até agora:** "posso responder antes do fim do loop?" (drill 018)
+- **Esquecer ferramentas já usadas** (`strings.Fields`, `Atoi`+`err`): usar no refazer; sugestão de `notes/toolbox.md`. (drill 018)
+- **Nomes:** de `f` (011) a `newSliceWithOnlyIntegers` (018). Escopo pequeno, nome curto. (drills 011 e 018)
 - **Dependência de estrutura pronta (ChatGPT):** ele mesmo disse que, com a estrutura, completa; sem ela, trava. A estrutura deve vir do cardápio. Ordem quando travar: padrão → tabela → dicas → chat com o tutor → IA só para "qual padrão é esse?". (drills 009 e 017)
 
 - **Do exemplo para o código (lógica → sintaxe):** resolvido à mão, perguntar de onde veio cada número e trocar pelo nome da variável. No 005 o plano tinha a resposta com números; no 008 o `Price` saiu assim, sem dica. Melhorando. (drills 005 e 008)

@@ -50,7 +50,7 @@ Pasta `drill/NNN-slug/` (NNN com 3 dígitos, slug em inglês), com:
   4. **Como se usa** — sintaxe com exemplo comentado, em outro assunto. O exemplo nunca pode ser a resposta do problema com outros nomes.
   5. **Armadilhas** — erros comuns, principalmente de quem vem de Python/JS.
   6. **O problema** — o que implementar, com nome do arquivo, `package`, assinaturas exatas e exemplos de entrada → saída.
-  7. **Checklist** — `// Plano:`, `go test -v`, commit e push.
+  7. **Checklist** — `// Plano:` com o método (exemplo à mão, padrão do cardápio do drill 018, passos em português) para as partes de pensar, "Dificuldades" no fim do arquivo, `go fmt ./...`, `go test -v`, commit e push.
 
   Teoria: uns 5 minutos de leitura. Problema: o tempo da parte 2 da dose, menos a leitura.
 
