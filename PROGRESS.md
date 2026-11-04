@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 020-maps
+current_drill: 021-maps-2
 status: pending           # pending | done
 ```
 
@@ -19,7 +19,7 @@ status: pending           # pending | done
 Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo menos 4 dos 5 dias úteis.
 
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
-- Semana 2 (02/11–06/11): seg ✓ (019)
+- Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020)
 
 ## Histórico
 
@@ -44,7 +44,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 017-slices | Slices: literal, índice, `len`, `append`, `for range`, troca (+ refazer: `DigitalRoot`) | 2026-10-29 | 2026-10-29 | Entregue com refazer certo. `MaxOf` com ajuste próprio (`return` dentro do `if`). `Countdown` e `ReverseInPlace` com bastante ajuda (inclusive do ChatGPT, para a estrutura). Autodiagnóstico preciso: entende as partes, trava ao juntar; escreve código antes de saber o que fazer. Review introduziu o método de 4 passos e o cardápio de padrões. `max` como variável de novo. |
 | 018-review-week-4 | Revisão de sexta: método de 4 passos + cardápio de padrões (+ refazer: `Reverse`) | 2026-10-30 | 2026-11-01 | Método aplicado nas 4 funções (exemplo, padrão, passos). `CountChar` e `Contains` sozinho, sem estrutura pronta. `LongestWord`: confundiu buscar com melhor até agora, esqueceu `strings.Fields`, comparou strings em vez de `len` (corrigiu). `ParseAll`: identificou os 2 padrões, esqueceu `Atoi`+`err`. Nomes longos demais. |
 | 019-slices-2 | Fatiar, janela vs cópia (`slices.Clone`), filtrar, `append(a, b...)` (+ refazer: `SumNumbers`) | 2026-11-02 | 2026-11-02 | Refazer do `SumNumbers` certo de memória (as ferramentas esquecidas no 018 voltaram). `contains` de memória. Tabela do `RemoveDuplicates` sozinho; travou ao traduzir "ignorar" (tentou `return false`, `if/else`); `== !true`. `FirstN` com dicas 2 e 3 (pensou em loop em vez de fatiar). Sem comentários. |
-| 020-maps | Maps: literal, leitura com ok, valor zero, `delete`, `range`, referência; padrões contar por chave e já vi? (+ refazer: `ReverseInPlace`) | 2026-11-03 | — | — |
+| 020-maps | Maps: literal, leitura com ok, valor zero, `delete`, `range`, referência; padrões contar por chave e já vi? (+ refazer: `ReverseInPlace`) | 2026-11-03 | 2026-11-03 | Maps não firmaram, e o README foi resumido demais (ele avisou: "explicações fracas"). Plano do `AddStock` válido (estilo Python). Confunde slice e map (`delete` em slice, valor como índice); `string` × `[]string` no `WordCount`. `Unique` com o trecho central vindo do ChatGPT. Refazer do `ReverseInPlace` com consulta. Colou no arquivo uma avaliação do ChatGPT para o tutor (útil). Frustrado nesse dia. |
+| 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | — | — |
 
 ## Pontos de atenção
 
@@ -53,6 +54,9 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **O ponto central (diagnosticado por ele no 017): juntar as partes num algoritmo.** Entende cada operação, mas trava ao montar a função e às vezes escreve código antes de saber o que fazer. Ferramenta: método de 4 passos (exemplo à mão → padrão do cardápio → passos em português → Go) e o cardápio (acumular, contar, melhor até agora, buscar, montar, percorrer dígitos, trocar pontas). Cobrar o passo 2 (nome do padrão) nos planos. No 018: aplicou o método nas 4 funções; resolveu sozinho as de padrão único. (drills 004 a 018; método desde o 018)
 - **Buscar vs melhor até agora:** "posso responder antes do fim do loop?" (drill 018)
 - **Expressar decisões em Go:** "ignorar" não é ação. Cada `if` guarda uma ação: "só faço X quando Y". Nunca `x == true`/`== !true`. (drill 019)
+- **Slice × map:** mesmo colchete, significados diferentes (posição × chave). Confundiu operações e sintaxe no 020. (drill 020)
+- **Tipo de saída das ferramentas:** `ToLower` → `string`, `Fields` → `[]string`. Consultar assinatura (`go doc`, `K` no nvim). (drill 020)
+- **Refazer pendente:** `Unique` (020) num refazer entre 06/11 e 10/11; `ReverseInPlace` (017) de novo depois. (drills 017 e 020)
 - **Ferramenta antes do loop:** "existe uma operação pronta?" (fatiar, `strings.Fields`, `slices.Clone`) antes de escolher padrão. (drill 019)
 - **Esquecer ferramentas já usadas** (`strings.Fields`, `Atoi`+`err`): usar no refazer; sugestão de `notes/toolbox.md`. (drill 018)
 - **Nomes:** de `f` (011) a `newSliceWithOnlyIntegers` (018). Escopo pequeno, nome curto. (drills 011 e 018)

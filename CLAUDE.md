@@ -54,6 +54,8 @@ Pasta `drill/NNN-slug/` (NNN com 3 dígitos, slug em inglês), com:
 
   Teoria: uns 5 minutos de leitura. Problema: o tempo da parte 2 da dose, menos a leitura.
 
+  **Estrutura ou ferramenta nova** (map, struct, pacote novo): o "O que é" traz uma tabela com **cada operação** (o que quero → sintaxe Go → o que acontece → equivalente em Python), a comparação com o que ela parece mas não é (slice × map, por exemplo), as **assinaturas** das funções usadas no drill e um exemplo rastreado mostrando o **estado** da estrutura volta a volta. Explicação resumida demais numa estrutura nova já gerou um drill perdido (020).
+
   Na dose de 45 min ou mais, o README ganha, **antes do "Hoje"**, a seção **"Antes de tudo: refazer de memória"**: qual função refazer (nome, assinatura, 2 ou 3 exemplos), de qual drill ela é, e a regra: sem olhar a solução antiga nem o `REVIEW.md`; se travar 10 minutos, anota no código o que tentou e aí pode consultar. Num dia ruim, pula direto para o drill.
 - **`redo/`** (dose 45 min ou mais) — subpasta com `redo_test.go` (`package redo`), testando uma função de um drill de 3 a 7 dias úteis atrás. Prefira uma ligada a um "Ponto de atenção" ou a um tema em que ele travou. Ele cria `redo/redo.go` do zero. Os testes ficam na subpasta para não quebrar o `go test` do drill principal.
 - **`interview/`** (dose 1h30, seg/qua/sex) — um problema no formato de entrevista, **enunciado em inglês** (no fim do README, seção "Interview problem"), usando só conceitos já vistos, com `interview_test.go` (`package interview`) e dicas no `HINTS.md`. Ele escreve um comentário `// Approach:` em inglês antes de codar, como explicaria a um entrevistador. A partir da fase 3, também a complexidade.
@@ -75,7 +77,7 @@ Direto, como um dev sênior revisando um PR, em pt-br:
 
 1. **Veredito** — uma linha.
 2. **Processo** — o que ele fez bem no processo (plano, tentativas, isolar o erro). Específico. Se não escreveu o `// Plano:`, aponte sem sermão.
-3. **Erros e melhorias** — cada item marcado como `[lógica]`, `[sintaxe]` ou `[idiomático]` (funciona, mas não é o jeito Go). Para cada um: o que ele fez, por que provavelmente pensou assim, e como pensar da próxima vez.
+3. **Erros e melhorias** — cada item marcado como `[lógica]` (algoritmo errado), `[ferramenta]` (não conhecia ou não lembrava a operação certa), `[sintaxe]` ou `[idiomático]` (funciona, mas não é o jeito Go). Antes de corrigir, diga se a **estratégia** dele era válida: estratégia válida porém mais longa não é erro de lógica. Para cada item: o que ele fez, por que provavelmente pensou assim, e como pensar da próxima vez.
 4. **Solução de referência** — idiomática e comentada, explicando o porquê das escolhas.
 5. **Para levar** — uma ou duas frases com o conceito principal.
 6. **Refazer de memória** e **Problema de entrevista** — só se ele fez; duas ou três linhas cada (o que saiu, o que errou). Se não fez, a seção não existe.
