@@ -98,6 +98,8 @@ func LetterCount(s string) map[rune]int {
 
 ## O problema
 
+> **Versão reduzida (09/11).** Para entregar, bastam o **`Price`** e o **`CharFrequency`** (uns 15 minutos): são só eles que o `go test -v` cobra. O `RemoveItem` e o `IsAnagram` viraram **extra**: se quiser fazer, rode `go test -v -tags extra`, que testa os quatro.
+
 Crie o arquivo **`maps2.go`** nesta pasta, com **`package maps2`**, e implemente:
 
 1. **`func Price(menu map[string]int, item string) (int, bool)`**: o preço do item, e se ele existe no cardápio.
@@ -105,30 +107,31 @@ Crie o arquivo **`maps2.go`** nesta pasta, com **`package maps2`**, e implemente
    - `Price(menu, "coffee")` → `6, true`
    - `Price(menu, "water")` → `0, true` (existe, e é de graça)
    - `Price(menu, "cake")` → `0, false` (não existe)
-2. **`func RemoveItem(stock map[string]int, item string) bool`**: apaga o item do próprio map. Devolve `true` se ele existia e `false` se não existia.
+2. **Extra: `func RemoveItem(stock map[string]int, item string) bool`**: apaga o item do próprio map. Devolve `true` se ele existia e `false` se não existia.
    - `{"apple": 3, "pear": 1}` com `"apple"` → devolve `true`, e o map fica `{"pear": 1}`
    - `{"pear": 1}` com `"kiwi"` → devolve `false`, e o map continua `{"pear": 1}`
 3. **`func CharFrequency(s string) map[rune]int`**: quantas vezes aparece cada rune (espaços contam também).
    - `CharFrequency("banana")` → `{'a': 3, 'b': 1, 'n': 2}`
    - `CharFrequency("ação")` → `{'a': 1, 'ç': 1, 'ã': 1, 'o': 1}`
    - `CharFrequency("")` → `{}`
-4. **`func IsAnagram(a, b string) bool`**: `a` e `b` têm exatamente as mesmas letras, nas mesmas quantidades (só que em outra ordem)?
+4. **Extra: `func IsAnagram(a, b string) bool`**: `a` e `b` têm exatamente as mesmas letras, nas mesmas quantidades (só que em outra ordem)?
    - `IsAnagram("listen", "silent")` → `true`
    - `IsAnagram("aab", "abb")` → `false` (as letras são as mesmas, as quantidades não)
    - `IsAnagram("rat", "car")` → `false`
    - `IsAnagram("", "")` → `true`
 
-O `RemoveItem` e o `IsAnagram` são as partes de pensar. No `IsAnagram`, a pergunta-chave é: **que representação das duas palavras deixa essa pergunta fácil?**
+O `CharFrequency` é a parte de pensar da versão reduzida. Nos extras, o `RemoveItem` e o `IsAnagram` são as partes de pensar. No `IsAnagram`, a pergunta-chave é: **que representação das duas palavras deixa essa pergunta fácil?**
 
-**Antes de codar, no `// Plano:`, o método para cada função** (operação pronta? padrão? passos em português?). No `CharFrequency("banana")`, a tabela com o **map depois de cada volta**, como no exemplo acima.
+**Antes de codar, no `// Plano:`, o método para cada função que você for fazer** (operação pronta? padrão? passos em português?). No `CharFrequency("banana")`, a tabela com o **map depois de cada volta**, como no exemplo acima.
 
 E no fim do arquivo, as **"Dificuldades"** ("nenhuma", se for o caso).
 
 ## Checklist
 
-- [ ] `// Plano:` com o método para as quatro funções e a tabela do `CharFrequency("banana")`.
+- [ ] `// Plano:` com o método para as funções que fizer e a tabela do `CharFrequency("banana")`.
 - [ ] Comentário do pacote e de cada função.
-- [ ] Nesta pasta, `go test -v` mostra `PASS` nos quatro testes.
+- [ ] Nesta pasta, `go test -v` mostra `PASS` nos dois testes (`Price` e `CharFrequency`).
+- [ ] Se fez os extras: `go test -v -tags extra` mostra `PASS` nos quatro.
 - [ ] Se fez o "refazer": `cd redo` e `go test -v` mostra `PASS`.
 - [ ] Na raiz do repo:
 

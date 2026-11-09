@@ -19,7 +19,8 @@ status: pending           # pending | done
 Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo menos 4 dos 5 dias úteis.
 
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
-- Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020)
+- Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
+- Semana 3 (09/11–13/11): (021 reduzido em 09/11 para `Price` + `CharFrequency`; os outros dois viraram extra com `-tags extra`)
 
 ## Histórico
 
