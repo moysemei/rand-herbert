@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 021-maps-2
+current_drill: 022-structs
 status: pending           # pending | done
 ```
 
@@ -20,7 +20,7 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
 - Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
-- Semana 3 (09/11–13/11): (021 reduzido em 09/11 para `Price` + `CharFrequency`; os outros dois viraram extra com `-tags extra`)
+- Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras)
 
 ## Histórico
 
@@ -46,7 +46,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 018-review-week-4 | Revisão de sexta: método de 4 passos + cardápio de padrões (+ refazer: `Reverse`) | 2026-10-30 | 2026-11-01 | Método aplicado nas 4 funções (exemplo, padrão, passos). `CountChar` e `Contains` sozinho, sem estrutura pronta. `LongestWord`: confundiu buscar com melhor até agora, esqueceu `strings.Fields`, comparou strings em vez de `len` (corrigiu). `ParseAll`: identificou os 2 padrões, esqueceu `Atoi`+`err`. Nomes longos demais. |
 | 019-slices-2 | Fatiar, janela vs cópia (`slices.Clone`), filtrar, `append(a, b...)` (+ refazer: `SumNumbers`) | 2026-11-02 | 2026-11-02 | Refazer do `SumNumbers` certo de memória (as ferramentas esquecidas no 018 voltaram). `contains` de memória. Tabela do `RemoveDuplicates` sozinho; travou ao traduzir "ignorar" (tentou `return false`, `if/else`); `== !true`. `FirstN` com dicas 2 e 3 (pensou em loop em vez de fatiar). Sem comentários. |
 | 020-maps | Maps: literal, leitura com ok, valor zero, `delete`, `range`, referência; padrões contar por chave e já vi? (+ refazer: `ReverseInPlace`) | 2026-11-03 | 2026-11-03 | Maps não firmaram, e o README foi resumido demais (ele avisou: "explicações fracas"). Plano do `AddStock` válido (estilo Python). Confunde slice e map (`delete` em slice, valor como índice); `string` × `[]string` no `WordCount`. `Unique` com o trecho central vindo do ChatGPT. Refazer do `ReverseInPlace` com consulta. Colou no arquivo uma avaliação do ChatGPT para o tutor (útil). Frustrado nesse dia. |
-| 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | — | — |
+| 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | 2026-11-09 | Quatro dias sem entrega depois do 020. Reduzido na segunda; entregue no mesmo dia, com os extras. Refazer do `LongestWord` certo de memória. Pela avaliação do ChatGPT colada no arquivo, ajuda nas quatro: `ok` comparado com `nil`, `return true` ignorando o `ok`, `count++` no lugar de `counts[r]++`, `map[string]bool` no anagrama. Sem plano, sem "Dificuldades" próprias, sem comentários. |
+| 022-structs | Structs: tipo, literal com nomes, campo com ponto, slice de structs, cópia na passagem (+ refazer: `WordCount`) | 2026-11-10 | — | — |
 
 ## Pontos de atenção
 
@@ -57,7 +58,12 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Expressar decisões em Go:** "ignorar" não é ação. Cada `if` guarda uma ação: "só faço X quando Y". Nunca `x == true`/`== !true`. (drill 019)
 - **Slice × map:** mesmo colchete, significados diferentes (posição × chave). Confundiu operações e sintaxe no 020. (drill 020)
 - **Tipo de saída das ferramentas:** `ToLower` → `string`, `Fields` → `[]string`. Consultar assinatura (`go doc`, `K` no nvim). (drill 020)
-- **Refazer pendente:** `Unique` (020) num refazer entre 06/11 e 10/11; `ReverseInPlace` (017) de novo depois. (drills 017 e 020)
+- **Refazer pendente:** `WordCount` (020) no 022; `Unique` (020) e `ReverseInPlace` (017) de novo depois. (drills 017 e 020)
+- **`ok` (bool) × `err` (error):** `!ok` × `err != nil`. Comparou `ok` com `nil` no 021. (drill 021)
+- **Contar × contar por chave:** `count++` (um número) × `counts[k]++` (um por chave). (drill 021)
+- **Representação e reaproveitamento (passo 2 do método):** "que representação deixa isso fácil?" e "já escrevi uma função que faz parte disso?". (drill 021)
+- **Devolver a variável que já tem a resposta,** em vez de um valor fixo (`return true` ignorando o `ok`). (drills 004 e 021)
+- **Quando um drill frustrar:** combinado de mandar "drill menor" no chat, em vez de parar. (drills 020 e 021)
 - **Ferramenta antes do loop:** "existe uma operação pronta?" (fatiar, `strings.Fields`, `slices.Clone`) antes de escolher padrão. (drill 019)
 - **Esquecer ferramentas já usadas** (`strings.Fields`, `Atoi`+`err`): usar no refazer; sugestão de `notes/toolbox.md`. (drill 018)
 - **Nomes:** de `f` (011) a `newSliceWithOnlyIntegers` (018). Escopo pequeno, nome curto. (drills 011 e 018)

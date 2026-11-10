@@ -24,7 +24,7 @@ Cada tópico pode virar um ou mais drills, conforme o desempenho.
 | 12 | Arrays e slices: criar, `append`, `len`/`cap`, fatiar | Sum, MaxOf, ReverseSlice |
 | 13 | Slices 2: filtrar, remover, cópia vs referência | FilterEven, RemoveDuplicates, SecondLargest |
 | 14 | Maps: criar, ler com `ok`, `delete`, percorrer | WordCount, CharFrequency |
-| 15 | Maps como ferramenta de lógica | TwoSum, IsAnagram, FirstUniqueChar |
+| 15 | Maps como ferramenta de lógica | TwoSum, IsAnagram, FirstUniqueChar (IsAnagram no 021, FirstRepeated no 020; TwoSum vai para uma revisão de sexta) |
 | 16 | Structs | Rectangle, Person, slice de structs |
 | 17 | Métodos: receiver por valor e por ponteiro | BankAccount com Deposit/Withdraw |
 | 18 | Ponteiros: o que são, quando usar, `nil` | Swap, IncrementAll |
