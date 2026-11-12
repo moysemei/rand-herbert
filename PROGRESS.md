@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 022-structs
+current_drill: 023-methods
 status: pending           # pending | done
 ```
 
@@ -20,7 +20,7 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
 - Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
-- Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras)
+- Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras), qua ✓ (022)
 
 ## Histórico
 
@@ -47,7 +47,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 019-slices-2 | Fatiar, janela vs cópia (`slices.Clone`), filtrar, `append(a, b...)` (+ refazer: `SumNumbers`) | 2026-11-02 | 2026-11-02 | Refazer do `SumNumbers` certo de memória (as ferramentas esquecidas no 018 voltaram). `contains` de memória. Tabela do `RemoveDuplicates` sozinho; travou ao traduzir "ignorar" (tentou `return false`, `if/else`); `== !true`. `FirstN` com dicas 2 e 3 (pensou em loop em vez de fatiar). Sem comentários. |
 | 020-maps | Maps: literal, leitura com ok, valor zero, `delete`, `range`, referência; padrões contar por chave e já vi? (+ refazer: `ReverseInPlace`) | 2026-11-03 | 2026-11-03 | Maps não firmaram, e o README foi resumido demais (ele avisou: "explicações fracas"). Plano do `AddStock` válido (estilo Python). Confunde slice e map (`delete` em slice, valor como índice); `string` × `[]string` no `WordCount`. `Unique` com o trecho central vindo do ChatGPT. Refazer do `ReverseInPlace` com consulta. Colou no arquivo uma avaliação do ChatGPT para o tutor (útil). Frustrado nesse dia. |
 | 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | 2026-11-09 | Quatro dias sem entrega depois do 020. Reduzido na segunda; entregue no mesmo dia, com os extras. Refazer do `LongestWord` certo de memória. Pela avaliação do ChatGPT colada no arquivo, ajuda nas quatro: `ok` comparado com `nil`, `return true` ignorando o `ok`, `count++` no lugar de `counts[r]++`, `map[string]bool` no anagrama. Sem plano, sem "Dificuldades" próprias, sem comentários. |
-| 022-structs | Structs: tipo, literal com nomes, campo com ponto, slice de structs, cópia na passagem (+ refazer: `WordCount`) | 2026-11-10 | — | — |
+| 022-structs | Structs: tipo, literal com nomes, campo com ponto, slice de structs, cópia na passagem (+ refazer: `WordCount`) | 2026-11-10 | 2026-11-11 | Quatro certas, sem plano. `TotalPages` e `CountByAuthor` "saíram naturais" (contar por chave reconhecido sem nomear). `MarkRead` mudando a própria cópia. Travou só no `NewBook` (literal com os parâmetros; o README só mostrou valores fixos). Comentários em tudo, com verbo certo. Variável do loop nomeada pelo campo (`p`, `a`). Refazer do `WordCount` certo. Pediu (com o ChatGPT) o `// Plano:` opcional: aceito. |
+| 023-methods | Métodos: receiver por valor × por ponteiro, não misturar, candidatos no `Fits` (+ refazer: `Unique`) | 2026-11-12 | — | — |
 
 ## Pontos de atenção
 
@@ -58,7 +59,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Expressar decisões em Go:** "ignorar" não é ação. Cada `if` guarda uma ação: "só faço X quando Y". Nunca `x == true`/`== !true`. (drill 019)
 - **Slice × map:** mesmo colchete, significados diferentes (posição × chave). Confundiu operações e sintaxe no 020. (drill 020)
 - **Tipo de saída das ferramentas:** `ToLower` → `string`, `Fields` → `[]string`. Consultar assinatura (`go doc`, `K` no nvim). (drill 020)
-- **Refazer pendente:** `WordCount` (020) no 022; `Unique` (020) e `ReverseInPlace` (017) de novo depois. (drills 017 e 020)
+- **Refazer pendente:** `Unique` (020) no 023; `ReverseInPlace` (017) depois. `WordCount` (020) certo no 022. (drills 017 e 020)
 - **`ok` (bool) × `err` (error):** `!ok` × `err != nil`. Comparou `ok` com `nil` no 021. (drill 021)
 - **Contar × contar por chave:** `count++` (um número) × `counts[k]++` (um por chave). (drill 021)
 - **Representação e reaproveitamento (passo 2 do método):** "que representação deixa isso fácil?" e "já escrevi uma função que faz parte disso?". (drill 021)
@@ -69,12 +70,12 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Nomes:** de `f` (011) a `newSliceWithOnlyIntegers` (018). Escopo pequeno, nome curto. (drills 011 e 018)
 - **Dependência de estrutura pronta (ChatGPT):** ele mesmo disse que, com a estrutura, completa; sem ela, trava. A estrutura deve vir do cardápio. Ordem quando travar: padrão → tabela → dicas → chat com o tutor → IA só para "qual padrão é esse?". (drills 009 e 017)
 
-- **Do exemplo para o código (lógica → sintaxe):** resolvido à mão, perguntar de onde veio cada número e trocar pelo nome da variável. No 005 o plano tinha a resposta com números; no 008 o `Price` saiu assim, sem dica. Melhorando. (drills 005 e 008)
-- **Papel de cada variável no loop — prioridade da revisão de sexta.** `i` / `word` / `r` = o item da vez; coleção ou limite = só diz o que percorrer; acumulador = nasce antes, cresce dentro; valor fixo (`base`) entra em toda volta. Voltou no 016 (usou o `s` inteiro em vez do `word`). (drills 009, 010 e 016)
+- **Do exemplo para o código (lógica → sintaxe):** resolvido à mão, perguntar de onde veio cada número e trocar pelo nome da variável. No 005 o plano tinha a resposta com números; no 008 o `Price` saiu assim, sem dica. No 022, travou no literal da struct com os parâmetros (mesma passagem). (drills 005, 008 e 022)
+- **Papel de cada variável no loop — prioridade da revisão de sexta.** `i` / `word` / `r` = o item da vez; coleção ou limite = só diz o que percorrer; acumulador = nasce antes, cresce dentro; valor fixo (`base`) entra em toda volta. Voltou no 016 (usou o `s` inteiro em vez do `word`). No 022, nomeou o item pelo campo (`p`, `a` para livros). (drills 009, 010, 016 e 022)
 - **Conferir o `err` antes de usar o valor.** (drill 016)
 - **Remontar número / fórmula com acumulador** (`rev*10 + digit`, `product *= base`): a parte que ainda pede ajuda nos loops. (drills 010 e 011)
 - ~~**Nome de variável:** `f`, `result` para contagem.~~ Resolvido no 013. (drills 010 e 011)
-- **Plano:** ele pula tabelas longas. Formato combinado a partir do 011: uma linha por função (muda / fixo / inicial / quando para) e tabela só quando travar, antes da dica. (drill 010)
+- **Plano:** opcional desde o 022, a pedido dele. Quando já vê a solução, vai direto ao código; quando travar, plano ou tabela **antes** da dica ou do pedido de ajuda. "Dificuldades" continuam obrigatórias. (drills 010 e 022)
 - **Pedir ajuda na ordem certa:** dicas → chat com o tutor → IA só para dica, sem código. No 009 a parte 3 veio pronta. (drill 009)
 - ~~**Só usar o que consegue explicar / registrar as "Dificuldades":**~~ Explicou o `d <= n/d` e voltou a escrever as "Dificuldades" no 014. Manter no radar. (drills 008, 012, 013 e 014)
 - **Pensar em "guardar tudo" (reflexo do Python):** no 014 quis guardar todos os dígitos para achar min/max. Treinar *single pass* com acumuladores. (drill 014)
@@ -88,7 +89,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Calcular primeiro, formatar depois:** o `Sprintf` não calcula, só coloca valores prontos nos slots, na ordem. (drill 004)
 - **Cálculo à mão no plano:** fazer o exemplo do README no papel antes de codar, a desmontagem também, não só a remontagem. No 004 teria pegado o `&&` errado do bissexto; no 007, o 101 do `Grade`. (drills 004, 005 e 007)
 - **Vocabulário: variável vs constante.** Chamou `tens := ...` de "constante". Constante = valor conhecido antes de rodar. (drill 005)
-- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"); no 012, nenhum de novo; ~~no 013, todos certos~~ (resolvido no 013, manter no radar). *based on*, não *based in* (2x). (drills 003 a 013)
+- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"); no 012, nenhum de novo; ~~no 013, todos certos~~ (resolvido no 013, manter no radar); no 021, nenhum; no 022, todos certos de novo. *based on*, não *based in* (2x). (drills 003 a 013)
 - **Inglês nos comentários e nomes:** ortografia, falsos cognatos (*resume* ≠ resumir → *summarize*), *person* vs *people*, *a*/*an*, *into*, *based on*. ~~Constante com unidade no nome~~ (feito no 008). (drills 002 a 008)
 - **Maiúscula = exportado** vale para constantes também: no 008 uma constante interna ficou exportada. (drill 008)
 - **Variável só para devolver** (`x := ...; return x`) quando o nome não acrescenta nada. (drills 003 e 008)

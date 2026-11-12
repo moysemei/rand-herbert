@@ -50,7 +50,7 @@ Pasta `drill/NNN-slug/` (NNN com 3 dígitos, slug em inglês), com:
   4. **Como se usa** — sintaxe com exemplo comentado, em outro assunto. O exemplo nunca pode ser a resposta do problema com outros nomes.
   5. **Armadilhas** — erros comuns, principalmente de quem vem de Python/JS.
   6. **O problema** — o que implementar, com nome do arquivo, `package`, assinaturas exatas e exemplos de entrada → saída.
-  7. **Checklist** — `// Plano:` com o método (exemplo à mão, padrão do cardápio do drill 018, passos em português) para as partes de pensar, "Dificuldades" no fim do arquivo, `go fmt ./...`, `go test -v`, commit e push.
+  7. **Checklist** — "Dificuldades" no fim do arquivo (obrigatório), `go fmt ./...`, `go test -v`, commit e push. O `// Plano:` é **opcional** desde o drill 022, a pedido dele: se ele já vê a solução, vai direto para o código; se travar, o plano com o método (exemplo à mão, padrão do cardápio do drill 018, passos em português) ou a tabela de rastreio vem **antes** de abrir uma dica ou pedir ajuda.
 
   Teoria: uns 5 minutos de leitura. Problema: o tempo da parte 2 da dose, menos a leitura.
 
@@ -76,7 +76,7 @@ Pasta `drill/NNN-slug/` (NNN com 3 dígitos, slug em inglês), com:
 Direto, como um dev sênior revisando um PR, em pt-br:
 
 1. **Veredito** — uma linha.
-2. **Processo** — o que ele fez bem no processo (plano, tentativas, isolar o erro). Específico. Se não escreveu o `// Plano:`, aponte sem sermão.
+2. **Processo** — o que ele fez bem no processo (plano, tentativas, isolar o erro). Específico. O `// Plano:` é opcional: só comente a falta dele se ele travou e pediu ajuda sem ter feito o plano ou a tabela antes, e sem sermão.
 3. **Erros e melhorias** — cada item marcado como `[lógica]` (algoritmo errado), `[ferramenta]` (não conhecia ou não lembrava a operação certa), `[sintaxe]` ou `[idiomático]` (funciona, mas não é o jeito Go). Antes de corrigir, diga se a **estratégia** dele era válida: estratégia válida porém mais longa não é erro de lógica. Para cada item: o que ele fez, por que provavelmente pensou assim, e como pensar da próxima vez.
 4. **Solução de referência** — idiomática e comentada, explicando o porquê das escolhas.
 5. **Para levar** — uma ou duas frases com o conceito principal.
@@ -94,7 +94,7 @@ Direto, como um dev sênior revisando um PR, em pt-br:
    4. Atualize `current_drill` e deixe `status: pending`.
 4. **Se não foi entregue:** não crie drill novo.
    - Se tem código parcial commitado: veja onde os testes falham e dê um empurrão específico, sem solução.
-   - Se não tem nada: um empurrão curto e leve, com o menor primeiro passo possível (abrir o README e escrever só o `// Plano:`).
+   - Se não tem nada: um empurrão curto e leve, com o menor primeiro passo possível (abrir o README e fazer só a parte fácil, ou escrever o `// Plano:` se não souber por onde começar).
    - Se é o 3º dia útil seguido sem entrega: pergunte, com leveza, se o drill está grande demais, e ofereça uma versão menor.
 5. Commit em inglês (`tutor: review 001, add drill 002` ou `tutor: nudge drill 001`) e push na `main`. Se o push for rejeitado, `git pull --rebase` e tente de novo. Nunca force push.
 6. Mensagem do dia (vira notificação no celular): pt-br, curta, no máximo 4 linhas. Drill do dia e tema; veredito do review em uma linha, se houver; lembrete de `git pull` antes de começar.
