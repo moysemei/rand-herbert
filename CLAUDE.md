@@ -46,7 +46,7 @@ Pasta `drill/NNN-slug/` (NNN com 3 dígitos, slug em inglês), com:
 - **`README.md`** (pt-br), nesta ordem:
   1. **Hoje** — uma frase com o objetivo.
   2. **O que é** — o conceito.
-  3. **Por que é assim** — a decisão de design do Go por trás. Compare com Python/JS quando ajudar.
+  3. **Por que é assim** — a decisão de design do Go por trás. Compare com Python/JS quando ajudar. Em ferramenta nova, inclua também **para que ela serve num backend de verdade**, com exemplos concretos (onde aparece, o que ele já usou que funciona assim). Sem isso o conceito fica solto: no 023 ele precisou perguntar para que servem métodos.
   4. **Como se usa** — sintaxe com exemplo comentado, em outro assunto. O exemplo nunca pode ser a resposta do problema com outros nomes.
   5. **Armadilhas** — erros comuns, principalmente de quem vem de Python/JS.
   6. **O problema** — o que implementar, com nome do arquivo, `package`, assinaturas exatas e exemplos de entrada → saída.

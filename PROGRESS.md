@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 023-methods
+current_drill: 024-pointers
 status: pending           # pending | done
 ```
 
@@ -20,7 +20,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
 - Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
-- Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras), qua ✓ (022)
+- Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras), qua ✓ (022), sex ✓ (023, entregue à noite). 3/5: contagem recomeça.
+- Semana 4 (16/11–20/11):
 
 ## Histórico
 
@@ -48,7 +49,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 020-maps | Maps: literal, leitura com ok, valor zero, `delete`, `range`, referência; padrões contar por chave e já vi? (+ refazer: `ReverseInPlace`) | 2026-11-03 | 2026-11-03 | Maps não firmaram, e o README foi resumido demais (ele avisou: "explicações fracas"). Plano do `AddStock` válido (estilo Python). Confunde slice e map (`delete` em slice, valor como índice); `string` × `[]string` no `WordCount`. `Unique` com o trecho central vindo do ChatGPT. Refazer do `ReverseInPlace` com consulta. Colou no arquivo uma avaliação do ChatGPT para o tutor (útil). Frustrado nesse dia. |
 | 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | 2026-11-09 | Quatro dias sem entrega depois do 020. Reduzido na segunda; entregue no mesmo dia, com os extras. Refazer do `LongestWord` certo de memória. Pela avaliação do ChatGPT colada no arquivo, ajuda nas quatro: `ok` comparado com `nil`, `return true` ignorando o `ok`, `count++` no lugar de `counts[r]++`, `map[string]bool` no anagrama. Sem plano, sem "Dificuldades" próprias, sem comentários. |
 | 022-structs | Structs: tipo, literal com nomes, campo com ponto, slice de structs, cópia na passagem (+ refazer: `WordCount`) | 2026-11-10 | 2026-11-11 | Quatro certas, sem plano. `TotalPages` e `CountByAuthor` "saíram naturais" (contar por chave reconhecido sem nomear). `MarkRead` mudando a própria cópia. Travou só no `NewBook` (literal com os parâmetros; o README só mostrou valores fixos). Comentários em tudo, com verbo certo. Variável do loop nomeada pelo campo (`p`, `a`). Refazer do `WordCount` certo. Pediu (com o ChatGPT) o `// Plano:` opcional: aceito. |
-| 023-methods | Métodos: receiver por valor × por ponteiro, não misturar, candidatos no `Fits` (+ refazer: `Unique`) | 2026-11-12 | — | — |
+| 023-methods | Métodos: receiver por valor × por ponteiro, não misturar, candidatos no `Fits` (+ refazer: `Unique`) | 2026-11-12 | 2026-11-13 | `Area`, `Deposit` e `Withdraw` sozinho, receiver certo e explicado com as palavras dele. `Fits`: em pé sozinho; a rotação (situação → condições) com ajuda. Precisou de explicação extra sobre para que servem métodos (o README não dizia). `if c { return true }; return false`. "Dificuldades" só com a avaliação do ChatGPT. Refazer do `Unique` certo. |
+| 024-pointers | Ponteiros: `&`, `*` nos dois sentidos, `nil`, endereço de item do slice × cópia do `range` (+ refazer: `IsAnagram`) | 2026-11-16 | — | — |
 
 ## Pontos de atenção
 
@@ -59,7 +61,9 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Expressar decisões em Go:** "ignorar" não é ação. Cada `if` guarda uma ação: "só faço X quando Y". Nunca `x == true`/`== !true`. (drill 019)
 - **Slice × map:** mesmo colchete, significados diferentes (posição × chave). Confundiu operações e sintaxe no 020. (drill 020)
 - **Tipo de saída das ferramentas:** `ToLower` → `string`, `Fields` → `[]string`. Consultar assinatura (`go doc`, `K` no nvim). (drill 020)
-- **Refazer pendente:** `Unique` (020) no 023; `ReverseInPlace` (017) depois. `WordCount` (020) certo no 022. (drills 017 e 020)
+- **Refazer pendente:** `IsAnagram` (021) no 024; `ReverseInPlace` (017) depois. `WordCount` (020) certo no 022; `Unique` (020) certo no 023. (drills 017, 020 e 021)
+- **`if c { return true }; return false` → `return c`,** com cada caso numa variável `bool` com nome. (drill 023)
+- **"Dificuldades" com as palavras dele,** mesmo quando cola a avaliação do ChatGPT junto (só ChatGPT no 021 e no 023). (drills 021 e 023)
 - **`ok` (bool) × `err` (error):** `!ok` × `err != nil`. Comparou `ok` com `nil` no 021. (drill 021)
 - **Contar × contar por chave:** `count++` (um número) × `counts[k]++` (um por chave). (drill 021)
 - **Representação e reaproveitamento (passo 2 do método):** "que representação deixa isso fácil?" e "já escrevi uma função que faz parte disso?". (drill 021)
@@ -70,7 +74,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Nomes:** de `f` (011) a `newSliceWithOnlyIntegers` (018). Escopo pequeno, nome curto. (drills 011 e 018)
 - **Dependência de estrutura pronta (ChatGPT):** ele mesmo disse que, com a estrutura, completa; sem ela, trava. A estrutura deve vir do cardápio. Ordem quando travar: padrão → tabela → dicas → chat com o tutor → IA só para "qual padrão é esse?". (drills 009 e 017)
 
-- **Do exemplo para o código (lógica → sintaxe):** resolvido à mão, perguntar de onde veio cada número e trocar pelo nome da variável. No 005 o plano tinha a resposta com números; no 008 o `Price` saiu assim, sem dica. No 022, travou no literal da struct com os parâmetros (mesma passagem). (drills 005, 008 e 022)
+- **Do exemplo para o código (lógica → sintaxe):** resolvido à mão, perguntar de onde veio cada número e trocar pelo nome da variável. No 005 o plano tinha a resposta com números; no 008 o `Price` saiu assim, sem dica. No 022, travou no literal da struct com os parâmetros; no 023, na rotação do `Fits` (situação → condições). Ferramenta: tabela "com números → de onde vem cada número → em Go". **Prioridade da próxima sexta.** (drills 005, 008, 022 e 023)
 - **Papel de cada variável no loop — prioridade da revisão de sexta.** `i` / `word` / `r` = o item da vez; coleção ou limite = só diz o que percorrer; acumulador = nasce antes, cresce dentro; valor fixo (`base`) entra em toda volta. Voltou no 016 (usou o `s` inteiro em vez do `word`). No 022, nomeou o item pelo campo (`p`, `a` para livros). (drills 009, 010, 016 e 022)
 - **Conferir o `err` antes de usar o valor.** (drill 016)
 - **Remontar número / fórmula com acumulador** (`rev*10 + digit`, `product *= base`): a parte que ainda pede ajuda nos loops. (drills 010 e 011)
