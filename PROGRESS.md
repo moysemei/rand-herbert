@@ -6,7 +6,7 @@ O tutor atualiza este arquivo. O campo `mode` você pode trocar à mão.
 mode: normal              # normal | maintenance (semana de prova: só revisão de ~10 min)
 dose: 45min               # desde 2026-10-26; 1h30 quando eu confirmar (ver CLAUDE.md)
 phase: 1 - Fundamentos
-current_drill: 024-pointers
+current_drill: 025-pointers-2
 status: pending           # pending | done
 ```
 
@@ -21,7 +21,7 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
 - Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
 - Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras), qua ✓ (022), sex ✓ (023, entregue à noite). 3/5: contagem recomeça.
-- Semana 4 (16/11–20/11):
+- Semana 4 (16/11–20/11): seg ✓ (024)
 
 ## Histórico
 
@@ -50,7 +50,8 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 | 021-maps-2 | Reforço de maps: operação por operação, três jeitos de "existe?", estado do map, trocar a representação (+ refazer: `LongestWord`) | 2026-11-04 | 2026-11-09 | Quatro dias sem entrega depois do 020. Reduzido na segunda; entregue no mesmo dia, com os extras. Refazer do `LongestWord` certo de memória. Pela avaliação do ChatGPT colada no arquivo, ajuda nas quatro: `ok` comparado com `nil`, `return true` ignorando o `ok`, `count++` no lugar de `counts[r]++`, `map[string]bool` no anagrama. Sem plano, sem "Dificuldades" próprias, sem comentários. |
 | 022-structs | Structs: tipo, literal com nomes, campo com ponto, slice de structs, cópia na passagem (+ refazer: `WordCount`) | 2026-11-10 | 2026-11-11 | Quatro certas, sem plano. `TotalPages` e `CountByAuthor` "saíram naturais" (contar por chave reconhecido sem nomear). `MarkRead` mudando a própria cópia. Travou só no `NewBook` (literal com os parâmetros; o README só mostrou valores fixos). Comentários em tudo, com verbo certo. Variável do loop nomeada pelo campo (`p`, `a`). Refazer do `WordCount` certo. Pediu (com o ChatGPT) o `// Plano:` opcional: aceito. |
 | 023-methods | Métodos: receiver por valor × por ponteiro, não misturar, candidatos no `Fits` (+ refazer: `Unique`) | 2026-11-12 | 2026-11-13 | `Area`, `Deposit` e `Withdraw` sozinho, receiver certo e explicado com as palavras dele. `Fits`: em pé sozinho; a rotação (situação → condições) com ajuda. Precisou de explicação extra sobre para que servem métodos (o README não dizia). `if c { return true }; return false`. "Dificuldades" só com a avaliação do ChatGPT. Refazer do `Unique` certo. |
-| 024-pointers | Ponteiros: `&`, `*` nos dois sentidos, `nil`, endereço de item do slice × cópia do `range` (+ refazer: `IsAnagram`) | 2026-11-16 | — | — |
+| 024-pointers | Ponteiros: `&`, `*` nos dois sentidos, `nil`, endereço de item do slice × cópia do `range` (+ refazer: `IsAnagram`) | 2026-11-16 | 2026-11-16 | Quatro certas. `AddBonus` e `FindByOwner` (as partes de pensar) idênticas à referência: índice, `&accounts[i]`, `nil` depois do loop. Travou no `Double` (`&n * 2` e `return`): `&` × `*` e devolver × escrever ainda soltos ("tá distante"). "Dificuldades" com as palavras dele. Sem comentários. Refazer do `IsAnagram` certo, com ajudante. |
+| 025-pointers-2 | Reforço de ponteiros: devolver × escrever (`Abs`/`MakeAbs`), pilha com receiver `*` e vírgula ok (+ extra `IsBalanced`; refazer: `Fits`) | 2026-11-17 | — | — |
 
 ## Pontos de atenção
 
@@ -61,12 +62,13 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Expressar decisões em Go:** "ignorar" não é ação. Cada `if` guarda uma ação: "só faço X quando Y". Nunca `x == true`/`== !true`. (drill 019)
 - **Slice × map:** mesmo colchete, significados diferentes (posição × chave). Confundiu operações e sintaxe no 020. (drill 020)
 - **Tipo de saída das ferramentas:** `ToLower` → `string`, `Fields` → `[]string`. Consultar assinatura (`go doc`, `K` no nvim). (drill 020)
-- **Refazer pendente:** `IsAnagram` (021) no 024; `ReverseInPlace` (017) depois. `WordCount` (020) certo no 022; `Unique` (020) certo no 023. (drills 017, 020 e 021)
+- **Refazer pendente:** `Fits` (023) no 025; `ReverseInPlace` (017) depois. Certos de memória: `WordCount` (022), `Unique` (023), `IsAnagram` (024). (drills 017, 020, 021 e 023)
+- **`&` sobe um nível, `*` desce; devolver × escrever no endereço.** Tentou `&n * 2` e `return` no `Double`. Reforço no 025. (drill 024)
 - **`if c { return true }; return false` → `return c`,** com cada caso numa variável `bool` com nome. (drill 023)
 - **"Dificuldades" com as palavras dele,** mesmo quando cola a avaliação do ChatGPT junto (só ChatGPT no 021 e no 023). (drills 021 e 023)
 - **`ok` (bool) × `err` (error):** `!ok` × `err != nil`. Comparou `ok` com `nil` no 021. (drill 021)
 - **Contar × contar por chave:** `count++` (um número) × `counts[k]++` (um por chave). (drill 021)
-- **Representação e reaproveitamento (passo 2 do método):** "que representação deixa isso fácil?" e "já escrevi uma função que faz parte disso?". (drill 021)
+- **Representação e reaproveitamento (passo 2 do método):** "que representação deixa isso fácil?" e "já escrevi uma função que faz parte disso?". No 024, o refazer do `IsAnagram` saiu assim, sozinho. (drills 021 e 024)
 - **Devolver a variável que já tem a resposta,** em vez de um valor fixo (`return true` ignorando o `ok`). (drills 004 e 021)
 - **Quando um drill frustrar:** combinado de mandar "drill menor" no chat, em vez de parar. (drills 020 e 021)
 - **Ferramenta antes do loop:** "existe uma operação pronta?" (fatiar, `strings.Fields`, `slices.Clone`) antes de escolher padrão. (drill 019)
@@ -93,7 +95,7 @@ Fraquezas que aparecem nos reviews, para revisitar nas sextas.
 - **Calcular primeiro, formatar depois:** o `Sprintf` não calcula, só coloca valores prontos nos slots, na ordem. (drill 004)
 - **Cálculo à mão no plano:** fazer o exemplo do README no papel antes de codar, a desmontagem também, não só a remontagem. No 004 teria pegado o `&&` errado do bissexto; no 007, o 101 do `Grade`. (drills 004, 005 e 007)
 - **Vocabulário: variável vs constante.** Chamou `tens := ...` de "constante". Constante = valor conhecido antes de rodar. (drill 005)
-- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"); no 012, nenhum de novo; ~~no 013, todos certos~~ (resolvido no 013, manter no radar); no 021, nenhum; no 022, todos certos de novo. *based on*, não *based in* (2x). (drills 003 a 013)
+- **Comentários:** ~~começar pelo nome~~ (feito no 004), ~~comentário do pacote~~ (feito no 005). Verbo na 3ª pessoa (*returns*, não *return*/*shows*); função `bool` usa "reports whether". No 006 não escreveu nenhum; no 007 voltaram, mas com "reports" em tudo; no 008, "shows"/"calculates"; no 009, nenhum de novo; no 010 voltaram, sem espaço depois do `//` e sem verbo; no 011, formatação certa (`go fmt`), mas ainda "reports" para `int` e inglês travado ("explit", "n have"); no 012, nenhum de novo; ~~no 013, todos certos~~ (resolvido no 013, manter no radar); no 021, nenhum; no 022 e no 023, todos certos; no 024, nenhum. *based on*, não *based in* (2x). (drills 003 a 013)
 - **Inglês nos comentários e nomes:** ortografia, falsos cognatos (*resume* ≠ resumir → *summarize*), *person* vs *people*, *a*/*an*, *into*, *based on*. ~~Constante com unidade no nome~~ (feito no 008). (drills 002 a 008)
 - **Maiúscula = exportado** vale para constantes também: no 008 uma constante interna ficou exportada. (drill 008)
 - **Variável só para devolver** (`x := ...; return x`) quando o nome não acrescenta nada. (drills 003 e 008)
