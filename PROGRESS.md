@@ -12,6 +12,7 @@ status: pending           # pending | done
 
 ## Agenda
 
+- **Pausa:** 2026-11-19 a 2026-11-23 (avisada por ele). Sem rotina nesses dias; eles não contam como dias sem entrega. Volta na terça, 2026-11-24, com o 025 ainda pendente.
 - **Prova:** 2026-12-05 (a confirmar). Semana de `maintenance`: 2026-11-30 a 2026-12-04. Volta ao normal em 2026-12-07.
 
 ## Dose 45 min: acompanhamento
@@ -21,7 +22,7 @@ Critério para propor 1h30: duas semanas seguidas com o drill entregue em pelo m
 - Semana 1 (26/10–30/10): seg ✓ (014), ter ✓ (015), qua ✓ (016), qui ✓ (017); o 018 (sexta) saiu no domingo. 4/5 ✓
 - Semana 2 (02/11–06/11): seg ✓ (019), ter ✓ (020); 021 pendente de qua a sex. Contagem recomeça.
 - Semana 3 (09/11–13/11): seg ✓ (021, reduzido em 09/11 para `Price` + `CharFrequency`; entregou também os extras), qua ✓ (022), sex ✓ (023, entregue à noite). 3/5: contagem recomeça.
-- Semana 4 (16/11–20/11): seg ✓ (024)
+- Semana 4 (16/11–20/11): seg ✓ (024); pausa de 19/11 em diante. Não conta para o critério.
 
 ## Histórico
 
